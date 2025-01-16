@@ -4,7 +4,7 @@
 
 
 <div @class(['page-main'])>
-    <div @class(['page-content', 'lg:col-span-9' => $sidebars->isNotEmpty(), 'lg:col-span-full' => !$sidebars->isNotEmpty()])>
+    <div @class(['page-content' => $sidebars->isNotEmpty(), 'lg:col-span-full' => !$sidebars->isNotEmpty()])>
         {{ $slot }}
     </div>
 

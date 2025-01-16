@@ -16,21 +16,21 @@ export default {
             fontFamily: {
                 sans: ['"Twemoji Country Flags"', 'var(--font-family)', ...defaultTheme.fontFamily.sans],
             },
-            fontSize : {
-                '2xs' : '.65rem',
+            fontSize: {
+                '2xs': '.65rem',
             },
             typography: (theme) => ({
                 DEFAULT: {
-                  css: {
-                    a: {
-                        'text-decoration': 'none',
+                    css: {
+                        a: {
+                            'text-decoration': 'none',
+                        },
+                        tr: {
+                            'border-bottom-width': '0px',
+                        },
                     },
-                    tr: {
-                        'border-bottom-width': '0px',
-                    },
-                  },
                 },
-              }),
+            }),
         },
     },
     darkMode: 'class',
@@ -45,9 +45,9 @@ export default {
                 light: {
                     ...require("daisyui/src/theming/themes")["winter"],
                     primary: '#1c3569',
-                    'primary-content': '#ffffff',
+                    'primary-content': '#F5EFFF',
                     'base-100': '#F1F6FA',
-                    'base-content' : '#000000',
+                    'base-content': '#000000',
                     '--rounded-box': '0px',
                     '--rounded-btn': '0.25rem',
                     '--btn-text-case': 'none',

@@ -23,6 +23,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">   
     <style>
         [x-cloak] {
             display: none !important;
@@ -32,7 +35,7 @@
     @vite(['resources/frontend/js/frontend.js'])
 
     @livewireStyles
-    
+
     @hook('Frontend::Views::Head')
 
     @if(isset($styleSheet) && !empty($styleSheet))
@@ -40,6 +43,6 @@
     @endif
 
     @production
-        <x-livewire-handle-error />   
+        <x-livewire-handle-error />
     @endproduction
 </head>

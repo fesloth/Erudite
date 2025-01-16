@@ -1,16 +1,29 @@
 <x-website::layouts.main>
-    @if ($conference->hasMedia('cover'))
-        <div class="conference-cover>
-            <img class="h-full" src="{{ $conference->getFirstMedia('cover')->getAvailableUrl(['thumb', 'thumb-xl']) }}"
-                alt="{{ $conference->title }}" />
-        </div>
-    @endif
-    @if ($conference->getMeta('about'))
+    <div class="h-screen mt-12">
+        <h1 class="text-[40px]">{{ $nextScheduledConference->title }} conference 2025</h1>
+        @if ($conference->getMeta('about'))
         <div class="mb-4 conference-about user-content">
             {!! $conference->getMeta('about') !!}
         </div>
     @endif
-    @if($nextScheduledConference || $pastScheduledConferences->isNotEmpty())
+    <h3 class="next-scheduled-conference-title">
+        <a href="{{ $nextScheduledConference->getHomeUrl() }}"
+            class="font-medium btn ">{{ $nextScheduledConference->title }}</a>
+    </h3>
+</div>
+    {{-- @if ($conference->hasMedia('cover'))
+        <div class="conference-cover">
+
+            <img class="h-full" src="{{ $conference->getFirstMedia('cover')->getAvailableUrl(['thumb', 'thumb-xl']) }}"
+                alt="{{ $conference->title }}" />
+        </div>
+    @endif --}}
+    {{-- @if ($conference->getMeta('about'))
+        <div class="mb-4 conference-about user-content">
+            {!! $conference->getMeta('about') !!}
+        </div>
+    @endif --}}
+    {{-- @if($nextScheduledConference || $pastScheduledConferences->isNotEmpty())
     <div class="space-y-6 scheduled-conferences">
         @if($nextScheduledConference)
             <div class="next-scheduled-conference">
@@ -134,5 +147,5 @@
             </div>
         @endif
     </div>
-    @endif
+    @endif --}}
 </x-website::layouts.main>

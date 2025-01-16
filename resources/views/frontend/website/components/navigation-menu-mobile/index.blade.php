@@ -5,8 +5,8 @@
 
 <aside class="flex items-center lg:hidden" x-slide-over>
     <button @@click="toggleSlideOver" class="btn btn-square btn-sm btn-ghost">
-        <x-heroicon-o-bars-3 class="h-6 w-6" x-show="!slideOverOpen" x-cloak />
-        <x-heroicon-o-x-mark class="h-6 w-6" x-show="slideOverOpen" x-cloak />
+        <x-heroicon-o-bars-3 class="w-6 h-6" x-show="!slideOverOpen" x-cloak />
+        <x-heroicon-o-x-mark class="w-6 h-6" x-show="slideOverOpen" x-cloak />
     </button>
     <template x-teleport="body">
         <div x-show="slideOverOpen" @@keydown.window.escape="closeSlideOver" class="relative z-[70]">
@@ -22,11 +22,11 @@
                             x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
                             class="w-screen max-w-xs">
                             <div
-                                class="bg-white border-neutral-100/70 border-r shadow-lg h-svh overflow-y-scroll">
-                                <div class="ps-4 py-2 bg-primary text-primary-content flex">
+                                class="overflow-y-scroll bg-white border-r shadow-lg border-neutral-100/70 h-svh">
+                                <div class="ps-4 py-2 bg-[#A294F9] text-primary-content flex">
                                     <x-website::logo :headerLogo="$headerLogo"/>
                                     <button @@click="closeSlideOver" class="btn btn-sm btn-square btn-ghost">
-                                        <x-heroicon-o-x-mark class="h-6 w-6" />
+                                        <x-heroicon-o-x-mark class="w-6 h-6" />
                                     </button>
                                 </div>
                                 <div class="flex flex-col justify-between">
@@ -38,7 +38,7 @@
                                                         @continue
                                                     @endif
                                                     @if ($item->children->isEmpty())
-                                                        <li class="navigation-menu-item relative">
+                                                        <li class="relative navigation-menu-item">
                                                             <x-website::link @class([
                                                                 'hover:bg-base-content/10 items-center py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex',
                                                                 'text-primary font-semibold' => request()->url() === $item->getUrl(),
@@ -48,11 +48,11 @@
                                                             </x-website::link>
                                                         </li>
                                                     @else
-                                                        <li x-data="{ open: false }" class="navigation-menu-item relative">
-                                                            <button 
+                                                        <li x-data="{ open: false }" class="relative navigation-menu-item">
+                                                            <button
                                                                 x-ref="button"
                                                                 @@click="open = !open"
-                                                                class="hover:bg-base-content/10 py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex items-center justify-between text-slate-900 font-medium"
+                                                                class="flex items-center justify-between w-full gap-4 px-4 py-2 pr-6 text-sm font-medium transition-colors outline-none hover:bg-base-content/10 text-slate-900"
                                                                 >
                                                                 <span>{{ $item->getLabel() }}</span>
                                                                 <svg :class="{ '-rotate-180': open}"
@@ -64,7 +64,7 @@
                                                             </button>
                                                             <ul x-show="open" x-collapse class="mt-1">
                                                                 @foreach ($item->children as $key => $childItem)
-                                                                    <li class="navigation-menu-item relative">
+                                                                    <li class="relative navigation-menu-item">
                                                                         <x-website::link @class([
                                                                             'hover:bg-base-content/10 items-center py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex',
                                                                             'text-primary font-semibold' => request()->url() === $item->getUrl(),
@@ -88,7 +88,7 @@
                                                     @continue
                                                 @endif
                                                 @if ($item->children->isEmpty())
-                                                    <li class="navigation-menu-item relative">
+                                                    <li class="relative navigation-menu-item">
                                                         <x-website::link @class([
                                                             'hover:bg-base-content/10 items-center py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex',
                                                             'text-primary font-semibold' => request()->url() === $item->getUrl(),
@@ -98,11 +98,11 @@
                                                         </x-website::link>
                                                     </li>
                                                 @else
-                                                    <li x-data="{ open: false }" class="navigation-menu-item relative">
-                                                        <button 
+                                                    <li x-data="{ open: false }" class="relative navigation-menu-item">
+                                                        <button
                                                             x-ref="button"
                                                             @@click="open = !open"
-                                                            class="hover:bg-base-content/10 py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex items-center justify-between text-slate-900 font-medium"
+                                                            class="flex items-center justify-between w-full gap-4 px-4 py-2 pr-6 text-sm font-medium transition-colors outline-none hover:bg-base-content/10 text-slate-900"
                                                             >
                                                             <span>{{ $item->getLabel() }}</span>
                                                             <svg :class="{ '-rotate-180': open}"
@@ -114,7 +114,7 @@
                                                         </button>
                                                         <ul x-show="open" x-collapse class="mt-1">
                                                             @foreach ($item->children as $key => $childItem)
-                                                                <li class="navigation-menu-item relative">
+                                                                <li class="relative navigation-menu-item">
                                                                     <x-website::link @class([
                                                                         'hover:bg-base-content/10 items-center py-2 px-4 pr-6 text-sm outline-none transition-colors gap-4 w-full flex',
                                                                         'text-primary font-semibold' => request()->url() === $item->getUrl(),

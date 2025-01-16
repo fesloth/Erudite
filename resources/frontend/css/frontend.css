@@ -17,7 +17,7 @@
 }
 
 :root {
-    --font-family: 'Inter';
+    --font-family: 'Lexend', sans-serif;
 
 }
 
@@ -30,7 +30,7 @@
 }
 
 .page-main {
-    @apply 
+    @apply
         mx-auto max-w-7xl flex flex-col w-full
         lg:grid lg:grid-cols-12 gap-3
 }
@@ -44,9 +44,9 @@
 }
 
 .user-content {
-    @apply 
-        prose prose-sm 
-        prose-a:text-primary prose-a:underline hover:prose-a:text-primary 
+    @apply
+        prose prose-sm
+        prose-a:text-primary prose-a:underline hover:prose-a:text-primary
         /* prose-h2:mt-0  */
         prose-h3:mt-0
         prose-p:my-2
