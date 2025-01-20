@@ -2,14 +2,14 @@
     <div class="mb-6">
         <x-website::breadcrumbs :breadcrumbs="$this->getBreadcrumbs()" />
     </div>
-    <div class="relative">
+    <div class="relative flex flex-col w-full mx-auto max-w-7xl">
         <div class="flex mb-5 space-x-4">
             <h1 class="text-xl font-semibold min-w-fit">{{ $this->getTitle() }}</h1>
             <hr class="w-full h-px my-auto bg-gray-200 border-0 dark:bg-gray-700">
         </div>
         @if (!$registerComplete)
             @if ($allowRegistration)
-                <form wire:submit='register' class="space-y-4">
+                <form wire:submit='register' class="mb-5 space-y-4 max-w-7xl">
                     @error('throttle')
                         <div class="text-sm text-red-600">
                             {{ $message }}
@@ -20,7 +20,7 @@
                             <label class="label-text">
                                 {{ __('general.given_name') }} <span class="text-red-500">*</span>
                             </label>
-                            <input type="text" class="input input-sm" wire:model="given_name" required />
+                            <input type="text" class="input input-sm border-[#A19AD3]" wire:model="given_name" required />
                             @error('given_name')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -31,7 +31,7 @@
                             <label class="label-text">
                                 {{ __('general.family_name') }}
                             </label>
-                            <input type="text" class="input input-sm" wire:model="family_name" />
+                            <input type="text" class="input input-sm border-[#A19AD3]" wire:model="family_name" />
                             @error('family_name')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -42,7 +42,7 @@
                             <label class="label-text">
                                 {{ __('general.affiliation') }}
                             </label>
-                            <input type="text" class="input input-sm" wire:model="affiliation" />
+                            <input type="text" class="input input-sm border-[#A19AD3]" wire:model="affiliation" />
                             @error('affiliation')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -53,7 +53,7 @@
                             <label class="label-text">
                                 {{ __('general.country') }}
                             </label>
-                            <select class="font-normal select select-sm" name="country" wire:model='country'>
+                            <select class="font-normal select select-sm border-[#A19AD3]" name="country" wire:model='country'>
                                 <option value="none" selected disabled>{{ __('general.select_country') }}</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->flag . ' ' . $country->name }}</option>
@@ -70,7 +70,7 @@
                             <label class="label-text">
                                 {{ __('general.phone') }}
                             </label>
-                            <input type="tel" class="input input-sm" wire:model="phone" />
+                            <input type="tel" class="input input-sm border-[#A19AD3]" wire:model="phone" />
                             @error('phone')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -82,7 +82,7 @@
                             <label class="label-text">
                                 {{ __('general.email') }} <span class="text-red-500">*</span>
                             </label>
-                            <input type="email" class="input input-sm" wire:model="email" />
+                            <input type="email" class="input input-sm border-[#A19AD3]" wire:model="email" />
                             @error('email')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -93,7 +93,7 @@
                             <label class="label-text">
                                 {{ __('general.password') }} <span class="text-red-500">*</span>
                             </label>
-                            <input type="password" class="input input-sm" wire:model="password" required />
+                            <input type="password" class="input input-sm border-[#A19AD3]" wire:model="password" required />
                             @error('password')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -104,7 +104,7 @@
                             <label class="label-text">
                                 {{ __('general.password_confirmation') }} <span class="text-red-500">*</span>
                             </label>
-                            <input type="password" class="input input-sm" wire:model="password_confirmation" required />
+                            <input type="password" class="input input-sm border-[#A19AD3]" wire:model="password_confirmation" required />
                             @error('password_confirmation')
                                 <div class="text-sm text-red-600">
                                     {{ $message }}
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                     <div class="flex gap-2">
-                        <button type="submit" class="btn btn-primary btn-sm" wire:loading.attr="disabled">
+                        <button type="submit" class="btn bg-[#A294F9] text-white btn-sm" wire:loading.attr="disabled">
                             <span class="loading loading-spinner loading-xs" wire:loading></span>
                             {{ __('general.register') }}
                         </button>

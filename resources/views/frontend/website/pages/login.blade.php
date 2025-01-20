@@ -2,12 +2,12 @@
     <div class="mb-6">
         <x-website::breadcrumbs :breadcrumbs="$this->getBreadcrumbs()" />
     </div>
-    <div class="relative">
+    <div class="relative flex flex-col w-full mx-auto max-w-7xl">
         <div class="flex mb-5 space-x-4">
             <h1 class="text-xl font-semibold min-w-fit">{{ __('general.login') }}</h1>
             <hr class="w-full h-px my-auto bg-gray-200 border-0 dark:bg-gray-700">
         </div>
-        <form wire:submit='login' class="space-y-4">
+        <form wire:submit='login' class="space-y-4 max-w-7xl">
             @error('throttle')
                 <div class="text-sm text-red-600">
                     {{ $message }}
@@ -17,7 +17,7 @@
                 <label class="label-text">
                     {{ __('general.email') }} <span class="text-red-500">*</span>
                 </label>
-                <input type="email" name="email" class="input input-sm" wire:model="email" required/>
+                <input type="email" name="email" class="border-[#A19AD3] input input-sm" wire:model="email" required/>
                 @error('email')
                     <div class="text-sm text-red-600">
                         {{ $message }}
@@ -28,7 +28,7 @@
                 <label class="label-text">
                     {{ __('general.password') }} <span class="text-red-500">*</span>
                 </label>
-                <input type="password" name="password" class="input input-sm" wire:model="password" required />
+                <input type="password" name="password" class="input input-sm border-[#A19AD3]" wire:model="password" required />
                 <label class="label-text">
                     <x-website::link :href="$resetPasswordUrl" class="link link-primary">{{ __('general.forgot_password_question') }}</x-website::link>
                 </label>
@@ -45,7 +45,7 @@
                 </label>
             </div>
             <div class="flex gap-2">
-                <button type="submit" class="btn btn-primary btn-sm" wire:loading.attr="disabled">
+                <button type="submit" class="btn bg-[#A294F9] text-white btn-sm" wire:loading.attr="disabled">
                     <span class="loading loading-spinner loading-xs" wire:loading></span>
                     {{ __('general.login') }}
                 </button>

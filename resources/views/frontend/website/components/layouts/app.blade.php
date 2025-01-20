@@ -8,10 +8,8 @@
         {{-- Load Header Layout --}}
         <x-website::layouts.header />
 
-        <main class="py-3">
             {{-- Load Main Layout --}}
             {{ $slot }}
-        </main>
 
         {{-- Load Footer Layout --}}
         <x-website::layouts.footer />

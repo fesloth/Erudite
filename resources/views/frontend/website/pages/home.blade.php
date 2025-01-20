@@ -10,17 +10,17 @@
 
             <x-website::heading-title title="{{ __('general.conference_list') }}" class="grow"/>
 
-            <div class="mt-6 mb-6 grid grid-cols-10 gap-2">
-                <div class="col-span-full gap-2">
+            <div class="grid grid-cols-10 gap-2 mt-6 mb-6">
+                <div class="gap-2 col-span-full">
                     <label class="input input-sm input-bordered !outline-none bg-white flex items-center gap-2">
                         <input type="search" class="grow" placeholder="{{ __('general.search') }}" wire:model.live.debounce="filter.search.value" />
-                        <x-heroicon-m-magnifying-glass class="h-4 w-4 opacity-70" />
+                        <x-heroicon-m-magnifying-glass class="w-4 h-4 opacity-70" />
                     </label>
                 </div>
 
-                <div class="col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit w-full" x-data="{ open: false }">
-                    <button tabindex="0" role="button" class="btn btn-sm btn-outline border-gray-300 w-full" x-ref="button" @@click="open = ! open">
-                        {{ __('general.scope') }} <x-heroicon-o-chevron-down class="h-4 w-4" />
+                <div class="w-full col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit" x-data="{ open: false }">
+                    <button tabindex="0" role="button" class="w-full border-gray-300 btn btn-sm btn-outline" x-ref="button" @@click="open = ! open">
+                        {{ __('general.scope') }} <x-heroicon-o-chevron-down class="w-4 h-4" />
                     </button>
 
                    <div tabindex="0"
@@ -30,28 +30,28 @@
                         x-on:mouseleave="open = false"
                         x-anchor="$refs.button">
                         <div>
-                            <button class="mb-2 btn btn-xs btn-outlin no-animation border-neutral-300 w-full" wire:click="resetFilter('scope')" wire:loading.attr="disabled">
+                            <button class="w-full mb-2 btn btn-xs btn-outlin no-animation border-neutral-300" wire:click="resetFilter('scope')" wire:loading.attr="disabled">
                                 {{ __('general.reset') }}
                             </button>
                         </div>
                         <div>
                             <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                <span class="label-text px-2">{{ __('general.international') }}</span>
+                                <span class="px-2 label-text">{{ __('general.international') }}</span>
                                 <input type="radio" class="radio radio-xs mx-1.5" value="{{ App\Models\Conference::SCOPE_INTERNATIONAL }}" wire:model.live="filter.scope.value" />
                             </label>
                         </div>
                         <div>
                             <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                <span class="label-text px-2">{{ __('general.national') }}</span>
+                                <span class="px-2 label-text">{{ __('general.national') }}</span>
                                 <input type="radio" class="radio radio-xs mx-1.5" value="{{ App\Models\Conference::SCOPE_NATIONAL }}" wire:model.live="filter.scope.value" />
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit w-full" x-data="{ open: false }">
-                    <button tabindex="0" role="button" class="btn btn-sm btn-outline border-gray-300 w-full" x-ref="button" @@click="open = ! open">
-                        {{ __('general.state') }} <x-heroicon-o-chevron-down class="h-4 w-4" />
+                <div class="w-full col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit" x-data="{ open: false }">
+                    <button tabindex="0" role="button" class="w-full border-gray-300 btn btn-sm btn-outline" x-ref="button" @@click="open = ! open">
+                        {{ __('general.state') }} <x-heroicon-o-chevron-down class="w-4 h-4" />
                     </button>
 
                     <div tabindex="0"
@@ -61,34 +61,34 @@
                         x-on:mouseleave="open = false"
                         x-anchor="$refs.button">
                         <div>
-                            <button class="mb-2 btn btn-xs btn-outline no-animation border-neutral-300 w-full" wire:click="resetFilter('state')" wire:loading.attr="disabled">
+                            <button class="w-full mb-2 btn btn-xs btn-outline no-animation border-neutral-300" wire:click="resetFilter('state')" wire:loading.attr="disabled">
                                 {{ __('general.reset') }}
                             </button>
                         </div>
                         <div>
                             <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                <span class="label-text px-2">{{ __('general.current') }}</span>
+                                <span class="px-2 label-text">{{ __('general.current') }}</span>
                                 <input type="checkbox" class="checkbox checkbox-xs mx-1.5" value="{{ self::STATE_CURRENT }}" wire:model.live="filter.state.value" />
                             </label>
                         </div>
                         <div>
                             <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                <span class="label-text px-2">{{ __('general.incoming') }}</span>
+                                <span class="px-2 label-text">{{ __('general.incoming') }}</span>
                                 <input type="checkbox" class="checkbox checkbox-xs mx-1.5" value="{{ self::STATE_INCOMING }}" wire:model.live="filter.state.value" />
                             </label>
                         </div>
                         <div>
                             <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                <span class="label-text px-2">{{ __('general.archived') }}</span>
+                                <span class="px-2 label-text">{{ __('general.archived') }}</span>
                                 <input type="checkbox" class="checkbox checkbox-xs mx-1.5" value="{{ self::STATE_ARCHIVED }}" wire:model.live="filter.state.value" />
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-span-full sm:col-span-5 md:col-span-2 h-fit w-full" x-data="{ open: false }">
-                    <button tabindex="0" role="button" class="btn btn-sm btn-outline border-gray-300 w-full" x-ref="button" @@click="open = ! open">
-                        {{ __('general.topic') }} <x-heroicon-o-chevron-down class="h-4 w-4" />
+                <div class="w-full col-span-full sm:col-span-5 md:col-span-2 h-fit" x-data="{ open: false }">
+                    <button tabindex="0" role="button" class="w-full border-gray-300 btn btn-sm btn-outline" x-ref="button" @@click="open = ! open">
+                        {{ __('general.topic') }} <x-heroicon-o-chevron-down class="w-4 h-4" />
                     </button>
 
                     <div tabindex="0"
@@ -100,19 +100,19 @@
                         <div>
                             <label class="mb-2 input input-xs w-full input-bordered !outline-none bg-white flex items-center">
                                 <input type="search" class="grow" placeholder="{{ __('general.search') }}" wire:model.live.debounce="filter.topic.search" />
-                                <x-heroicon-m-magnifying-glass class="h-3 w-3 opacity-70" />
+                                <x-heroicon-m-magnifying-glass class="w-3 h-3 opacity-70" />
                             </label>
-                            <button class="mb-2 btn btn-xs btn-outline no-animation border-neutral-300 w-full" wire:click="resetFilter('topic')" wire:loading.attr="disabled">
+                            <button class="w-full mb-2 btn btn-xs btn-outline no-animation border-neutral-300" wire:click="resetFilter('topic')" wire:loading.attr="disabled">
                                 {{ __('general.reset') }}
                             </button>
                         </div>
 
                         @if($topics->isNotEmpty())
-                        <div class="max-h-64 overflow-scroll">
+                        <div class="overflow-scroll max-h-64">
                             @foreach ($topics as $topic)
                                 <div>
                                     <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                        <span class="label-text text-sm">{{ $topic->name }}</span>
+                                        <span class="text-sm label-text">{{ $topic->name }}</span>
                                         <input type="checkbox" class="checkbox checkbox-xs mx-1.5" value="{{ $topic->name }}" wire:model.live="filter.topic.value" />
                                     </label>
                                 </div>
@@ -120,7 +120,7 @@
                         </div>
                         @else
                         <div>
-                            <p class="text-center text-xs">
+                            <p class="text-xs text-center">
                                 {{ __('general.option_are_empty') }}
                             </p>
                         </div>
@@ -128,9 +128,9 @@
                     </div>
                 </div>
 
-                <div class="col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit w-full" x-data="{ open: false }">
-                    <button tabindex="0" role="button" class="btn btn-sm btn-outline border-gray-300 w-full" x-ref="button" @@click="open = ! open">
-                        {{ __('general.coordinator') }} <x-heroicon-o-chevron-down class="h-4 w-4" />
+                <div class="w-full col-span-full sm:col-span-5 md:col-span-2 dropdown h-fit" x-data="{ open: false }">
+                    <button tabindex="0" role="button" class="w-full border-gray-300 btn btn-sm btn-outline" x-ref="button" @@click="open = ! open">
+                        {{ __('general.coordinator') }} <x-heroicon-o-chevron-down class="w-4 h-4" />
                     </button>
 
                     <div tabindex="0"
@@ -142,18 +142,18 @@
                         <div>
                             <label class="mb-2 input input-xs input-bordered !outline-none bg-white flex items-center">
                                 <input type="search" class="grow" placeholder="{{ __('general.search') }}" wire:model.live.debounce="filter.coordinator.search" />
-                                <x-heroicon-m-magnifying-glass class="h-3 w-3 opacity-70" />
+                                <x-heroicon-m-magnifying-glass class="w-3 h-3 opacity-70" />
                             </label>
-                            <button class="mb-2 btn btn-xs btn-outline no-animation border-neutral-300 w-full" wire:click="resetFilter('coordinator')" wire:loading.attr="disabled">
+                            <button class="w-full mb-2 btn btn-xs btn-outline no-animation border-neutral-300" wire:click="resetFilter('coordinator')" wire:loading.attr="disabled">
                                 {{ __('general.reset') }}
                             </button>
                         </div>
                         @if ($coordinatorList->isNotEmpty())
-                            <div class="max-h-64 overflow-scroll">
+                            <div class="overflow-scroll max-h-64">
                             @foreach ($coordinatorList as $coordinator)
                                 <div>
                                     <label class="py-1.5 label cursor-pointer hover:bg-neutral-200 hover:!text-white transition-colors rounded">
-                                        <span class="label-text px-2">{{ $coordinator->value }}</span>
+                                        <span class="px-2 label-text">{{ $coordinator->value }}</span>
                                         <input type="checkbox" class="checkbox checkbox-xs mx-1.5" value="{{ $coordinator->value }}" wire:model.live="filter.coordinator.value" />
                                     </label>
                                 </div>
@@ -161,7 +161,7 @@
                             </div>
                         @else
                             <div>
-                                <p class="text-center text-xs">
+                                <p class="text-xs text-center">
                                     {{ __('general.option_are_empty') }}
                                 </p>
                             </div>
@@ -169,17 +169,17 @@
                     </div>
                 </div>
 
-                <button class="col-span-full md:col-span-2 btn btn-sm btn-primary w-full tooltip" data-tip="Clear all the filter and the search input." wire:click="resetFilters" wire:loading.attr="disabled">
+                <button class="w-full col-span-full md:col-span-2 btn btn-sm btn-primary tooltip" data-tip="Clear all the filter and the search input." wire:click="resetFilters" wire:loading.attr="disabled">
                     {{ __('general.reset_all') }}
                 </button>
 
-                <div class="col-span-full w-full">
+                <div class="w-full col-span-full">
 
                     @if ($scopeSelected)
                         <span class="px-3 py-0.5 badge badge-primary text-xs">
                             {{ __('general.scope') }}: {{ Str::headline($scopeSelected) }}
                             <span class="ml-2">
-                                <x-heroicon-o-x-mark class="h-3 w-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('scope')" />
+                                <x-heroicon-o-x-mark class="w-3 h-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('scope')" />
                             </span>
                         </span>
                     @endif
@@ -188,7 +188,7 @@
                         <span class="px-3 py-0.5 badge badge-primary text-xs">
                             {{ __('general.state') }}: {{ implode(', ', $stateSelected) }}
                             <span class="ml-2">
-                                <x-heroicon-o-x-mark class="h-3 w-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('state')" />
+                                <x-heroicon-o-x-mark class="w-3 h-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('state')" />
                             </span>
                         </span>
                     @endif
@@ -197,7 +197,7 @@
                         <span class="px-3 py-0.5 badge badge-primary text-xs">
                             {{ __('general.topic') }}: {{ implode(', ', $topicSelected) }}
                             <span class="ml-2">
-                                <x-heroicon-o-x-mark class="h-3 w-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('topic')" />
+                                <x-heroicon-o-x-mark class="w-3 h-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('topic')" />
                             </span>
                         </span>
                     @endif
@@ -206,7 +206,7 @@
                         <span class="px-3 py-0.5 badge badge-primary text-xs">
                             {{ __('general.coordinator') }}: {{ implode(', ', $coordinatorSelected) }}
                             <span class="ml-2">
-                                <x-heroicon-o-x-mark class="h-3 w-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('coordinator')" />
+                                <x-heroicon-o-x-mark class="w-3 h-3 cursor-pointer hover:text-neutral" wire:click="resetFilter('coordinator')" />
                             </span>
                         </span>
                     @endif

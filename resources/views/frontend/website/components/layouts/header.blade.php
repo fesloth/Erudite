@@ -4,8 +4,8 @@
 @endphp
 
 @if(app()->getCurrentConference() || app()->getCurrentScheduledConference())
-    <div class="navbar-container bg-[#A294F9] text-white shadow z-50">
-        <div class="justify-between mx-auto navbar max-w-7xl">
+    <div class="navbar-container bg-[#A294F9] text-white shadow">
+        <div class="justify-between mx-auto navbar">
             <div class="items-center gap-2 navbar-start w-max">
                 <x-website::navigation-menu-mobile />
                 <x-website::logo :headerLogo="$headerLogo"/>
