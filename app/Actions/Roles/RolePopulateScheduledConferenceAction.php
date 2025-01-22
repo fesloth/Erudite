@@ -19,7 +19,11 @@ class RolePopulateScheduledConferenceAction
                 'conference_id' => $scheduledConference->conference_id,
                 'scheduled_conference_id' => $scheduledConference->getKey(),
             ]);
-
         }
     }
+
+    // public function pp()
+    // {
+    //     trs
+    // }
 }

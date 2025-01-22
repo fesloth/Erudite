@@ -4,6 +4,7 @@ namespace App\Classes;
 
 use App\Facades\Hook;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Support\Facades\Blade;
 use luizbills\CSS_Generator\Generator as CSSGenerator;
 use matthieumastadenis\couleur\ColorFactory;
@@ -40,7 +41,6 @@ class DefaultTheme extends Theme
 				HTML;
             }
         });
-
     }
 
     public function loadInformation()
@@ -61,6 +61,8 @@ class DefaultTheme extends Theme
             ColorPicker::make('appearance_color')
                 ->regex('/^#?(([a-f0-9]{3}){1,2})$/i')
                 ->label(__('general.appearance_color')),
+            FileUpload::make('upload_header_images')
+                ->label(__('general.upload_header_images')),
         ];
     }
 
@@ -68,6 +70,7 @@ class DefaultTheme extends Theme
     {
         return [
             'appearance_color' => $this->getSetting('appearance_color'),
+            'upload_header_images' => $this->getSetting('upload_header_images'),
         ];
     }
 

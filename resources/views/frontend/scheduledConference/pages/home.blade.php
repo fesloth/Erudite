@@ -1,130 +1,4 @@
 <x-website::layouts.main>
-{{--
-    <div class="space-y-8">
-        <x-scheduledConference::alert-scheduled-conference :scheduled-conference="$currentScheduledConference" />
-        @if ($currentScheduledConference->hasMedia('cover')||$currentScheduledConference->getMeta('about')||$currentScheduledConference->getMeta('additional_content'))
-            <section id="highlight" class="space-y-4">
-                <div class="flex flex-col flex-wrap gap-4 space-y-4 sm:flex-row sm:space-y-0">
-                    <div class="flex flex-col flex-1 gap-4">
-                        @if ($currentScheduledConference->hasMedia('cover'))
-                            <div class="cf-cover">
-                                <img class="h-full"
-                                    src="{{ $currentScheduledConference->getFirstMedia('cover')->getAvailableUrl(['thumb', 'thumb-xl']) }}"
-                                    alt="{{ $currentScheduledConference->title }}" />
-                            </div>
-                        @endif
-                        @if ($currentScheduledConference->getMeta('about'))
-                            <div class="user-content">
-                                {{ new Illuminate\Support\HtmlString($currentScheduledConference->getMeta('about')) }}
-                            </div>
-                        @endif
-                        @if ($currentScheduledConference->getMeta('additional_content'))
-                            <div class="user-content">
-                                {{ new Illuminate\Support\HtmlString($currentScheduledConference->getMeta('additional_content')) }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </section>
-        @endif
-        @if ($currentScheduledConference?->speakers->isNotEmpty())
-            <section id="speakers" class="flex flex-col gap-y-0">
-                <x-website::heading-title title="Speakers" class="mb-5"/>
-                <div class="space-y-6 cf-speakers">
-                    @foreach ($currentScheduledConference->speakerRoles as $role)
-                        @if ($role->speakers->isNotEmpty())
-                            <div class="space-y-4">
-                                <h3 class="text-lg">{{ $role->name }}</h3>
-                                <div class="grid gap-2 cf-speaker-list sm:grid-cols-2">
-                                    @foreach ($role->speakers as $speaker)
-                                        <div class="flex items-center h-full gap-2 cf-speaker">
-                                            <img class="object-cover w-16 h-16 rounded-full cf-speaker-img aspect-square"
-                                                src="{{ $speaker->getFilamentAvatarUrl() }}"
-                                                alt="{{ $speaker->fullName }}" />
-                                            <div class="space-y-1 cf-speaker-information">
-                                                <div class="text-gray-900 cf-speaker-name">
-                                                    {{ $speaker->fullName }}
-                                                </div>
-                                                @if ($speaker->getMeta('affiliation'))
-                                                    <div class="text-xs text-gray-700 cf-speaker-affiliation">
-                                                        {{ $speaker->getMeta('affiliation') }}</div>
-                                                @endif
-                                                @if($speaker->getMeta('scopus_url') || $speaker->getMeta('google_scholar_url') || $speaker->getMeta('orcid_url'))
-                                                    <div class="flex flex-wrap items-center gap-1 cf-committee-scholar">
-                                                        @if($speaker->getMeta('orcid_url'))
-                                                        <a href="{{ $speaker->getMeta('orcid_url') }}" target="_blank">
-                                                            <x-academicon-orcid class="orcid-logo" />
-                                                        </a>
-                                                        @endif
-                                                        @if($speaker->getMeta('google_scholar_url'))
-                                                        <a href="{{ $speaker->getMeta('google_scholar_url') }}" target="_blank">
-                                                            <x-academicon-google-scholar class="google-scholar-logo" />
-                                                        </a>
-                                                        @endif
-                                                        @if($speaker->getMeta('scopus_url'))
-                                                        <a href="{{ $speaker->getMeta('scopus_url') }}" target="_blank">
-                                                            <x-academicon-scopus class="scopus-logo" />
-                                                        </a>
-                                                        @endif
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </section>
-        @endif
-
-        @if($sponsorLevels->isNotEmpty() || $sponsorsWithoutLevel->isNotEmpty())
-            <section class="sponsors">
-                <x-website::heading-title title="Sponsors" class="mb-5"/>
-                <div class="space-y-6 conference-sponsor-levels">
-                    @if($sponsorsWithoutLevel->isNotEmpty())
-                        <div class="conference-sponsor-level">
-                            <div class="flex flex-wrap items-center gap-4 conference-sponsors">
-                                @foreach($sponsorsWithoutLevel as $sponsor)
-                                    @if(!$sponsor->getFirstMedia('logo'))
-                                        @continue
-                                    @endif
-                                    <x-scheduledConference::conference-sponsor :sponsor="$sponsor" />
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                    @foreach ($sponsorLevels as $sponsorLevel)
-                        <div class="conference-sponsor-level">
-                            <h3 class="mb-4 text-lg">{{ $sponsorLevel->name }}</h3>
-                            <div class="flex flex-wrap items-center gap-4 conference-sponsors">
-                                @foreach($sponsorLevel->stakeholders as $sponsor)
-                                    @if(!$sponsor->getFirstMedia('logo'))
-                                        @continue
-                                    @endif
-                                    <x-scheduledConference::conference-sponsor :sponsor="$sponsor" />
-                                @endforeach
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </section>
-        @endif
-        @if($partners->isNotEmpty())
-            <section class="partners">
-                <x-website::heading-title title="Partners" class="mb-5"/>
-                <div class="flex flex-wrap items-center gap-4 conference-partners">
-                    @foreach($partners as $partner)
-                        @if(!$partner->getFirstMedia('logo'))
-                            @continue
-                        @endif
-                        <x-scheduledConference::conference-partner :partner="$partner" />
-                    @endforeach
-                </div>
-            </section>
-        @endif
-    </div> --}}
     <div class="relative h-screen overflow-hidden">
 
         <button id="left-slider" class="absolute z-10 w-16 h-16 transform -translate-y-1/2 bg-gray-200 rounded-full shadow-lg top-1/2 left-4 hover:bg-gray-300">
@@ -146,19 +20,25 @@
                             - {{ $currentScheduledConference->date_end->format(Setting::get('format_date')) }}
                         @endif
                     </div>
-                    <a href="#" class="px-6 py-3 bg-[#A294F9] hover:bg-[#b5a8f7] text-white mt-5 font-semibold rounded-lg">
+                    <a href="#" class="btn px-6 py-3 bg-[#A294F9] hover:bg-[#b5a8f7] text-white mt-5 border-0 font-semibold rounded-lg">
                         Buy Your Ticket
                     </a>
                 </div>
                 <div class="relative w-1/2">
-                    <img src="{{ asset('ppll.jpeg') }}" class="object-cover w-full h-full">
+                    @if ($currentScheduledConference->hasMedia('cover'))
+                    <div class="cf-cover">
+                        <img class="h-full"
+                            src="{{ $currentScheduledConference->getFirstMedia('cover')->getAvailableUrl(['thumb', 'thumb-xl']) }}"
+                            alt="{{ $currentScheduledConference->title }}" />
+                    </div>
+                @endif
                 </div>
             </div>
             <div class="flex h-full min-w-full">
                 <div class="w-1/2 bg-[#C5BAFF] text-white flex flex-col justify-center items-start p-16">
                     <h1 class="mb-4 text-4xl font-bold">Virtual Summit 2025</h1>
                     <p class="p-6 text-lg">5 - 7 April 2025 | Online Event</p>
-                    <a href="#" class="px-6 py-3 bg-[#A294F9] hover:bg-[#b5a8f7] text-white mt-5 font-semibold rounded-lg">
+                    <a href="#" class="btn px-6 py-3 bg-[#A294F9] hover:bg-[#b5a8f7] text-white mt-5 font-semibold rounded-lg">
                         Learn More
                     </a>
                 </div>
@@ -280,8 +160,14 @@
         </section>
     @endif
 
-    <div class="flex justify-center w-full mt-48 mb-48">
-        <img src="{{ asset('ppl.jpeg') }}" class="">
+    <div class="card bg-base-100 image-full w-full mt-48 mb-48">
+        <figure>
+            <img src="{{ asset('ppl.jpeg') }}" class="w-full">
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">Organizing Committee</h2>
+            <p>lorem ipsum dolor sit amet</p>
+        </div>
     </div>
 
     <div class="mt-12">
@@ -334,7 +220,7 @@
 <button class="mt-10 btn bg-[#A294F9] text-white">BECOME A SPONSOR</button>
     </div>
 
-    <div class="flex flex-col items-center justify-center gap-5 mx-auto mt-48 mb-48 ">
+    <div class="flex flex-col items-center justify-center gap-5 mx-auto mt-48 mb-48">
         <h1 class="text-[40px]">Sign Up for Our Newsletter</h1>
         <div class="flex gap-5">
             <label class="flex items-center gap-2 input input-bordered">

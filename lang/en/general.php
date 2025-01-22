@@ -73,8 +73,11 @@ return [
 
     'appearance' => 'Appearance',
     'theme' => 'Theme',
+
     'appearance_color' => 'Appearance Color',
+    'upload_header_images' => 'Upload Header Images',
     'custom_stylesheet' => 'Custom Stylesheet',
+    'layouts' => 'Add to layouts',
     'save' => 'Save',
     'saved' => 'Saved!',
     'failed' => 'Failed!',
